@@ -309,10 +309,15 @@ color: #f4ded7ef;
 .image img{
    position: fixed;
    top: 400px;
-   left:1100px;
+   right: 0;
    height: 250px;
    width: 250px;
    border-radius: 100%;
+    @media (min-width:100px) and (max-width:1000px){
+    img{
+        display: flex;
+    }
+}
 
 }
     </style>
