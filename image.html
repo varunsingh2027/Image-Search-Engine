@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Search Engine</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            box-sizing: border-box;
+        }
+
+       body{
+        background: rgb(2,0,36);
+        background: linear-gradient(135deg, #69befa, #18181c);
+color: #f4ded7ef;
+
+
+}     
+        h1{ width: 50%;
+            height:10%;
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            margin: 100px auto 50px;
+            font-size: 40px;
+            font-weight: 700;
+            border-radius: 10px;
+         
+            
+         
+            box-shadow:  2px 2px 10px rgb(42, 37, 37);
+        }
+
+        .form{
+            width: 68%;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 80px;
+            background: #e2961c;
+            display: flex;
+            border-radius: 30px;
+            
+            align-items: center;
+            gap: 9px;
+        }
+
+        .form input{
+            width: 80%;
+            height: 85%;
+            border-radius: 22px;
+            
+            border: 0;
+            outline: 0;
+            background: transparent;
+           
+            color: beige;
+            font-size: 18px;
+            padding: 0 20px;
+        }
+
+        .form input::placeholder{
+            color: #f4ded7ef;
+            font-size: 18px;
+        }
+        .form button{
+            padding: 0 40px;
+            
+            height: 100%;
+            border-radius: 33px;
+            border: 0;
+            outline: 0;
+            /* color: #fff; */
+            background: green;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out 0.11s;
+            
+        }
+
+        .form button:hover{
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+        .moreBtn{
+            /* width: 100px;
+            height: 40px; */
+
+            background: #ff3929;
+            color: #e9eaf4;
+            border: 0;
+            outline: 0;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 20px auto 89px;
+            display: none;
+            transition: all 0.1s ease-in-out 0.05s;
+        }
+        .moreBtn:hover{
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+
+        .search-result{
+            width: 80%;
+            max-width: 1200px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 40px;
+            margin: 100px auto 50px;
+        }
+        .search-result img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 0 10px #030850ef;
+        }
+        .credits{
+            text-align: center;
+            margin: 50px 0;
+            width: 25%;
+            position:absolute;
+            top :80%;
+            left:37%;
+            position: fixed;
+            top:400px;
+           
+           
+        
+            
+        }
+        
+        .credits a{
+            color: #190d82;
+            text-decoration: none;
+            font-size: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .a{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 18px;
+            animation-name:colorAnimate1 ;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in;
+            animation-direction: alternate;
+            animation-delay: 10ms;
+            
+
+        }
+        .b{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 18px;
+            animation-name:colorAnimate2 ;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
+            animation-delay: 10ms;
+            
+
+        }
+        .c{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 18px;
+            animation-name:colorAnimate3 ;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in;
+            animation-direction: alternate;
+            animation-delay: 10ms;
+         
+
+        }
+ 
+        @keyframes colorAnimate1{
+                0%{
+                    transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                }
+                10%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1.2);
+                }
+                20%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);color: transparent;
+                }
+                30%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(0.9);
+                }
+                40%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);color: transparent;
+                }
+                50%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(0.8);
+                }
+                60%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                    color: transparent;
+                }
+                70%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1.3);
+                }
+                80%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                }
+                90%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1.2);
+                }
+                100%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                }
+                
+            }
+            @keyframes colorAnimate2{
+                0%{
+                    transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                }
+                10%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1.2);
+                }
+                20%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);color: transparent;
+                }
+                30%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(0.9);
+                }
+                40%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);color: transparent;
+                }
+                50%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(0.8);
+                }
+                60%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                    color: transparent;
+                }
+                70%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1.3);
+                }
+                80%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                }
+                90%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1.2);
+                }
+                100%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                }
+                
+            }     
+            @keyframes colorAnimate3{
+                0%{
+                    transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                }
+                10%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1.2);
+                }
+                20%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);color: transparent;
+                }
+                30%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(0.9);
+                }
+                40%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);color: transparent;
+                }
+                50%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(0.8);
+                }
+                60%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                    color: transparent;
+                }
+                70%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1.3);
+                }
+                80%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                }
+                90%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1.2);
+                }
+                100%{transition: all 0.1s ease-in-out 0.11s;
+                    transform: scale(1);
+                }
+                
+            }    
+      
+         @keyframes colorAnimate1 {
+    from{background-color: transparent;}
+    to{background-color: orange;}
+    
+}
+
+@keyframes colorAnimate2 {
+    from{background-color: transparent;}
+    to{background-color: white;}
+    
+}
+
+@keyframes colorAnimate3 {
+    from{background-color: transparent;}
+    to{background-color: green;}
+    
+}
+.image img{
+   position: fixed;
+   top: 400px;
+   left:1100px;
+   height: 250px;
+   width: 250px;
+   border-radius: 100%;
+
+}
+    </style>
+</head>
+<!-- t_Qf3deg5t15Fc6ooaVdG9pASbAVVfkbeorC7uAiyic -->
+<body>
+
+    <h1 style = "color : white">Image Search Engine</h1>
+
+    <form class="form">
+        <input type="text" class="search-box" placeholder="Search Images Here.." >
+        <button>Search</button>
+    </form>
+    <div class="credits">
+        <p  class="a">Created By: Varun Sing<br>Credit To : Eesh</p>p
+       
+        <p  class="b">API Used: Unsplash</p>
+       
+        <p class="c" >GitHub: <a class="a" href="https://github.com/etk18">Click Here</a></p>
+         
+    </div>
+      <div class="search-result">
+
+      </div>
+      <div class="image">
+    
+        <img src="https://pbs.twimg.com/media/F9EgjvKasAArzEz.jpg:large">
+      </div>
+
+      <button class="moreBtn">Show More</button>
+    
+
+
+    <script>
+
+const searchForm = document.querySelector('.form');
+const searchBox = document.querySelector('.search-box');
+const searchResult= document.querySelector('.search-result');
+const showMoreBtn = document.querySelector('.moreBtn');
+
+let page = 1;
+let keyword = '';
+
+async function searchImages(){
+    keyword = searchBox.value;
+    const url= `https://api.unsplash.com/search/photos?client_id=t_Qf3deg5t15Fc6ooaVdG9pASbAVVfkbeorC7uAiyic&query=${keyword}&page=${page}&per_page=12`;
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data);
+    const result = data.results;
+    result.map((result)=>{
+        const img = document.createElement('img');
+        img.src = result.urls.small;
+        searchResult.appendChild(img);
+    });
+    showMoreBtn.style.display = 'block';}
+
+
+showMoreBtn.addEventListener('click', ()=>{
+    page++;
+    searchImages();});
+
+
+    searchForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    pahe =1;
+    searchResult.innerHTML = '';
+    searchImages();
+    });
+
+
+
+    </script>
+</body>
+</html>
